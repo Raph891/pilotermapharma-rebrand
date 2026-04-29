@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PiloterMaPharma — Landing page
 
-## Getting Started
+Site marketing du logiciel de pilotage pour pharmaciens titulaires.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, server components)
+- React 19
+- Tailwind CSS v4 (avec @theme)
+- shadcn/ui sur Base UI
+- lucide-react pour les icônes
+- Inter + JetBrains Mono via next/font
+
+## Démarrer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site tourne sur http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/` — App Router : layout, page racine, pages légales (mentions, CGU, RGPD, cookies), routes metadata (sitemap, robots, opengraph-image, twitter-image).
+- `src/components/sections/` — sections de la landing (Hero, Features, Objectives, Payroll, Planning, Showcase, MDL, Challenges, HowItWorks, Integrations, MultiPharma, Comparison, Testimonials, Security, Conformité, CoffreRh, Pricing, FAQ, FinalCta, SiteFooter).
+- `src/components/ui/` — primitives shadcn (button, card, accordion, badge, separator).
+- `public/` — logo SVG, favicon SVG.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sections principales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Pilotage** — CA mois par mois, marges, KPIs.
+- **Suivi des objectifs** — fixés au bilan de l'expert-comptable, suivis mois par mois.
+- **Masse salariale** — ratio MS/CA avec simulateur « Est-ce que je peux embaucher ? ».
+- **Planning & RH** — plannings hebdo, fiches de poste, organigramme, coffre-fort employé.
+- **Conformité ARS** — 155 points de contrôle structurés sur 15 rubriques.
+- **Coffre-fort officine** — documents officiels par pharmacie, chiffrés au repos.
 
-## Deploy on Vercel
+## Sécurité
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Headers de sécurité configurés dans `next.config.ts` (X-Frame-Options, HSTS, Permissions-Policy, Referrer-Policy).
+- Aucun secret en dur, `.env*` gitignoré.
+- JSON-LD SoftwareApplication + Organization pour le SEO.
+- Sitemap.ts et robots.ts générés via les conventions App Router.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Déploiement
+
+Pensé pour Vercel. Aucune variable d'environnement requise pour le moment.
+
+## Licence
+
+Propriétaire — tous droits réservés.
